@@ -8,7 +8,7 @@
 
 First open the terminal and run
 ```bash
-$ git clone URL
+$ git clone https://github.com/Dornat/polygon-gas-station-extension.git
 ```
 
 Then build the project, run
