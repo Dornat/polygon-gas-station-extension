@@ -11,6 +11,11 @@ First open the terminal and run
 $ git clone https://github.com/Dornat/polygon-gas-station-extension.git
 ```
 
+Go into the folder
+```bash
+$ cd polygon-gas-station-extension
+```
+
 Then build the project, run
 ```bash
 $ yarn build
@@ -18,7 +23,7 @@ $ yarn build
 
 All the files that needed to run the extension are now in `dist` folder.
 
-Now got to any chromium based browser (Chromium, Google Chrome, Brave) and open Settings -> Extension.
+Now go to any chromium based browser (Chromium, Google Chrome, Brave) and open Settings -> Extensions.
 Now click `Load Unpacked` and choose the `dist` folder that was created after `yarn build`.
 *Developer mode maybe needed in order to load unpacked extension*.
 
