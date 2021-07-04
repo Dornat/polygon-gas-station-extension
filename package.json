@@ -1,6 +1,6 @@
 {
   "name": "polygon-gas-station",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -20,6 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "./scripts/build.sh",
+    "build:zip": "cd dist && zip -r polygon_gas_station.zip . && mv polygon_gas_station.zip .. && cd ..",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
