@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import GasBlock from './GasBlock'
 
-function App() {
+export type GasStationObject = {
+  safeLow: number
+  standard: number
+  fast: number
+  fastest: number
+}
+
+const App = () => {
+  const [gasStationObject, setGasStationObject] = useState<GasStationObject | null>(null)
+
+  useEffect(() => {
+    handleReload()
+    const interval = setInterval(() => {
+      handleReload()
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [])
+
+  const handleReload = () => {
+    fetch('https://gasstation-mainnet.matic.network')
+      .then(response => response.json())
+      .then(data => setGasStationObject({
+        safeLow: data.safeLow,
+        standard: data.standard,
+        fast: data.fast,
+        fastest: data.fastest
+      }))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="gas-board">
+        {gasStationObject && Object.keys(gasStationObject).map((k: string, index) => (
+          // @ts-ignore
+          <GasBlock key={index} type={k} value={gasStationObject[k]}/>
+        ))}
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
